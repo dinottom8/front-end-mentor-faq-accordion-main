@@ -138,4 +138,18 @@ h3 {
     display: block;
     margin: auto;
     margin-top: 24px;
+    cursor: pointer;
+}
+
+.submit_button:hover {
+    transform: scale(110%);
+    filter: brightness(90%);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.submit_button:active {
+    transform: scale(100%);
+    filter: brightness(70%);
+    transition: 0.1s ease;
 }
