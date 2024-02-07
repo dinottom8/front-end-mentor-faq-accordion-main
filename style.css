@@ -23,28 +23,52 @@ body {
     width: 100%;
 }
 
-.faq-div {
-    width: 800px;
-    min-height: 100px;
-    background-color: #ffffff;
-    border-radius: 14px;
-    box-shadow: 0px 0px 100px 1px hsla(292, 42%, 14%, 0.571);
+.accordion {
+    width: 820px;
+    background-color: white;
     padding: 32px;
-}
-
-.logo {
+    border-radius: 24px;
+    box-shadow: 0px 0px 100px 10px hsla(292, 42%, 14%, 0.331);
     display: flex;
-    align-items: center;
-    font-weight: 700;
-    font-size: 64px;
+    flex-direction: column;
     gap: 24px;
-    margin-bottom: 18px;
 }
 
-.parte-cima-pergunta {
+.title {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.ask {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
+}
+
+.open-content {
+    transition: 0.2s ease;
+}
+
+.open-content:hover {
+    transform: scale(110%);
+    filter: brightness(90%);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.content {
+    color: hsl(292, 16%, 49%);
+    font-size: 16px;
+    line-height: 24px;
+    height: 0px;
+    opacity: 0;
+    overflow: hidden;
+    transition: height 0.5s ease, opacity 0.5s ease;
+}
+
+.active {
+    height: 80px;
+    opacity: 1;
+    transition: height 0.5s ease, opacity 0.5s ease;
 }
