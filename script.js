@@ -1,6 +1,9 @@
-let openButtons = [...document.querySelectorAll(".open-content")];
+let open_buttons = [...document.querySelectorAll(".open-content")];
+let add_accordion = document.querySelector(".add_accordion");
+let form_accordion = document.querySelector(".form_accordion");
+let modal_blackout = document.querySelector(".modal_blackout")
 
-openButtons.forEach((el)=>{
+open_buttons.forEach((el)=>{
     el.addEventListener("click", ()=>{
         let contentEl = el.parentElement.nextElementSibling;
         if(contentEl.classList.contains("active")){
@@ -12,3 +15,8 @@ openButtons.forEach((el)=>{
         }
     });
 });
+
+add_accordion.addEventListener(("click"), () => {
+    form_accordion.style.display = 'block';
+    modal_blackout.style.display = 'block';
+})
