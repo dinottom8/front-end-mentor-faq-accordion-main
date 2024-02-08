@@ -18,6 +18,15 @@ let form_values = [
         "answer": "The best place to get help is inside Frontend Mentor's Discord community. There's a help channel where you can ask questions and seek support from other community members."
     }
 ];
+const open_buttons = []; 
+
+function clearAccordion() {
+    var accordion = document.querySelector(".accordion");
+    
+    while (accordion.firstChild) {
+        accordion.removeChild(accordion.firstChild);
+    }
+}
 
 function createAccordion() {
     form_values.forEach((el) => {
@@ -42,26 +51,25 @@ function createAccordion() {
     
         accordion.appendChild(newEl);
     });
-    var items = [...document.querySelectorAll(".item")]
+
+    var items = [...document.querySelectorAll(".item")];
+
+    const open_buttons = [...document.querySelectorAll(".open-content")];
+    open_buttons.forEach((el)=>{
+        el.addEventListener("click", ()=>{
+    
+            let contentEl = el.parentElement.nextElementSibling;
+            if(contentEl.classList.contains("active")){
+                contentEl.classList.remove("active");
+                el.src = '../assets/images/icon-plus.svg'
+            }else{
+                el.src = '../assets/images/icon-minus.svg'
+                contentEl.classList.add("active");
+            }
+        });
+    });
 }
 createAccordion();
-
-let open_buttons = [...document.querySelectorAll(".open-content")];
-
-
-open_buttons.forEach((el)=>{
-    el.addEventListener("click", ()=>{
-
-        let contentEl = el.parentElement.nextElementSibling;
-        if(contentEl.classList.contains("active")){
-            contentEl.classList.remove("active");
-            el.src = '../assets/images/icon-plus.svg'
-        }else{
-            el.src = '../assets/images/icon-minus.svg'
-            contentEl.classList.add("active");
-        }
-    });
-});
 
 add_accordion.addEventListener(("click"), () => {
     form_accordion.style.display = 'block';
@@ -77,9 +85,9 @@ submit_button.addEventListener("click", () => {
     form_accordion.style.display = 'none';
     modal_blackout.style.display = 'none';
     form_values.push({
-        "ask": document.querySelector("#form_question").innerHTML,
-        "answer": document.querySelector("#form_answer").innerHTML
+        "ask": document.querySelector("#form_question").value,
+        "answer": document.querySelector("#form_answer").value
     })
-    removeAccordionElements();
+    clearAccordion();
     createAccordion();
 })
